@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - revision
-
+ permissions:
+  contents: write
 jobs:
   check-and-merge:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+        token: ${{ secrets.TOKEN_ACCESSO_GENERICO_ADMIN }}
 
       - name: Check parameter in index file
         env:
@@ -20,9 +23,6 @@ jobs:
           echo "Parameter found: $PARAM"
           if [ -n "$PARAM" ]; then
             echo "Merging branch revision"
-            git config --global user.name "MaZap75"
-            git config --global user.email "mzappulla75@gmail.com"
-            git remote set-url origin https://x-access-token:${REPO_ACCESS_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
             git fetch
             git checkout main
             echo "checkout main ok"
