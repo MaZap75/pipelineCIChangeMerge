@@ -20,10 +20,13 @@ jobs:
             echo "Merging branch revision"
             git config --global user.name "MaZap75"
             git config --global user.email "mzappulla75@gmail.com"
+            git checkout
             git fetch
             git checkout main
+            git checkout
             echo "checkout main ok"
             git merge revision -X theirs --allow-unrelated-histories
+            git push origin main
           
           else
             echo "Merge condition not met."
