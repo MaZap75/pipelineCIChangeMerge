@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - revision
+      
  permissions:
   contents: write
 jobs:
@@ -27,7 +28,7 @@ jobs:
             git checkout main
             echo "checkout main ok"
             git merge revision -X theirs --allow-unrelated-histories
-            git push https://x-access-token:${{ secrets.REPO_ACCESS_TOKEN }}@github.com/MaZap75/privato.git main
+            git push https://x-access-token:${{ secrets.REPO_ACCESS_TOKEN }}@github.com/MaZap75/privato.git 
           else
             echo "Merge condition not met."
           fi
