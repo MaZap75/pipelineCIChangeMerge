@@ -20,6 +20,7 @@ jobs:
             echo "Merging branch revision"
             git config --global user.name "MaZap75"
             git config --global user.email "mzappulla75@gmail.com"
+            git fetch
             git checkout main
             echo "checkout main ok"
             #git merge revision
