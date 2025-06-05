@@ -23,7 +23,7 @@ jobs:
             git fetch
             git checkout main
             echo "checkout main ok"
-            git merge revision --allow-unrelated-histories
+            git merge revision -X theirs --allow-unrelated-histories
           
           else
             echo "Merge condition not met."
