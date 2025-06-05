@@ -18,7 +18,7 @@ jobs:
           echo "Parameter found: $PARAM"
           if [ -n "$PARAM" ]; then
             echo "Merging branch revision"
-            git checkout main
+            git checkout master
             git merge revision
           else
             echo "Merge condition not met."
