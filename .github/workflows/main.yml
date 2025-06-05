@@ -1,0 +1,40 @@
+name: Auto Merge
+
+on:
+  push:
+    branches:
+      - revision
+
+permissions:
+  contents: write
+
+jobs:
+  check-and-merge:
+    runs-on: ubuntu-latest
+    env:
+      REPO_ACCESS_TOKEN: ${{ secrets.TOKEN_ACCESSO_GENERICO_ADMIN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+
+      - name: Check parameter in index file
+        run: |
+          PARAM=$(grep -E "const versione = \"[0-9]+\.[0-9]+\.[0-9]+\"" index.html || echo "false")
+          echo "Parameter found: $PARAM"
+          if [ "$PARAM" != "false" ]; then
+            echo "Merging branch revision"
+            git config --global user.name "MaZap75"
+            git config --global user.email "mzappulla75@gmail.com"
+            
+            git remote set-url origin https://x-access-token:${{ secrets.REPO_ACCESS_TOKEN }}@github.com/MaZap75/privato.git
+            
+            git fetch origin
+            git checkout main
+            echo "Checkout main ok"
+
+            git merge revision -X theirs --allow-unrelated-histories
+            git push origin main
+          else
+            echo "Merge condition not met."
+          fi
