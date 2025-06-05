@@ -28,6 +28,6 @@ jobs:
             git merge revision -X theirs --allow-unrelated-histories
             git push https://x-access-token:${{ secrets.PAT }}@github.com/MaZap75/privato.git main
           
-          else
+          else 
             echo "Merge condition not met."
           fi
