@@ -21,11 +21,8 @@ jobs:
             git config --global user.name "MaZap75"
             git config --global user.email "mzappulla75@gmail.com"
             git checkout main
-    
-             BRANCH=$(git branch -r | grep "origin/main" || echo "master" )
-             echo "Using branch: $BRANCH"
-             git checkout $BRANCH
-             #git merge revision
+            echo "checkout main ok"
+            #git merge revision
           
           else
             echo "Merge condition not met."
