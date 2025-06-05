@@ -20,6 +20,10 @@ jobs:
             echo "Merging branch revision"
             git config --global user.name "MaZap75"
             git config --global user.email "mzappulla75@gmail.com"
+            
+            git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}.git
+      echo      ${{ secrets.PAT }
+            echo 
             git checkout
             git fetch
             git checkout main
