@@ -16,7 +16,7 @@ jobs:
         run: |
           PARAM=$(grep "const versione = *.*.*" index.html || echo "false")
           echo "Parameter found: $PARAM"
-          if [[ "$PARAM" == "const versione = *.*.*" ]]; then
+          if [ -n "$PARAM" ]; then
             echo "Merging branch revision"
             git checkout main
             git merge revision
