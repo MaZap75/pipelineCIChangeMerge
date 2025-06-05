@@ -21,10 +21,10 @@ jobs:
             git config --global user.name "MaZap75"
             git config --global user.email "mzappulla75@gmail.com"
             git checkout main
-             git fetch origin
+    
              BRANCH=$(git branch -r | grep "origin/main" || echo "master" )
              echo "Using branch: $BRANCH"
-             git checkout $BRANC
+             git checkout $BRANCH
              #git merge revision
           
           else
