@@ -18,7 +18,9 @@ jobs:
           echo "Parameter found: $PARAM"
           if [ -n "$PARAM" ]; then
             echo "Merging branch revision"
-            git checkout master
+            git config --global user.name "MaZap75"
+            git config --global user.email "mzappulla75@gmail.com"
+            git checkout main
             git merge revision
           else
             echo "Merge condition not met."
