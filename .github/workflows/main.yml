@@ -11,9 +11,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-     env:
-            REPO_ACCESS_TOKEN: ${{ secrets."token accesso geneico admin" }}
+
       - name: Check parameter in index file
+        env:
+          REPO_ACCESS_TOKEN: ${{ secrets.TOKEN_ACCESSO_GENERICO_ADMIN }}
         run: |
           PARAM=$(grep "const versione = *.*.*" index.html || echo "false")
           echo "Parameter found: $PARAM"
@@ -21,16 +22,12 @@ jobs:
             echo "Merging branch revision"
             git config --global user.name "MaZap75"
             git config --global user.email "mzappulla75@gmail.com"
-            
-            git remote set-url origin https://x-access-token:${{ secrets.REPO_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
-            git checkout
+            git remote set-url origin https://x-access-token:${REPO_ACCESS_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
             git fetch
             git checkout main
-            git checkout
             echo "checkout main ok"
             git merge revision -X theirs --allow-unrelated-histories
-            git push https://x-access-token:${{ secrets.REPO_ACCESS_TOKEN }}@github.com/MaZap75/privato.git main
-          
-          else 
+            git push origin main
+          else
             echo "Merge condition not met."
           fi
