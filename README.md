@@ -6,5 +6,5 @@
 - Se manca o è errata, il workflow viene 
 
 ### 2 **Merge sul Branch Primario**
-- Se la versione è validata, il branch ` viene unito a `main`.
+- Se la versione è validata, il branch viene unito a main.
 - Il merge avviene solo se i test di integrazione sono superati.
